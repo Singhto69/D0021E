@@ -6,10 +6,8 @@ public class Run {
 	public static void main (String [] args)
 	{
  		//Creates two links
- 		//Link link1 = new Link();
-		//Link link2 = new Link();
-		Link link1 = new Lossylink();
-		Link link2 = new Lossylink();
+		Lossylink link1 = new Lossylink(10, 1, 1d);
+		Lossylink link2 = new Lossylink(5, 1, 0d);
 		// Create two end hosts that will be
 		// communicating via the router
 		Node host1 = new Node(1,1);
