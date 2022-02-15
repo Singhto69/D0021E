@@ -35,13 +35,18 @@ public class NodePoisson extends Node {
 				
 				System.out.println("Node "+_id.networkId()+ "." + _id.nodeId() +" sent message with seq: "+_seq + " at time "+SimEngine.getTime());
 				_seq++;
+				
+				statisticsSend();
 			}
 		}
 		if (ev instanceof Message)
 		{
 			System.out.println("Node "+_id.networkId()+ "." + _id.nodeId() +" receives message with seq: "+((Message) ev).seq() + " at time "+SimEngine.getTime());
 			
+			statisticsRecv();
 		}
+		
+		System.out.println("\nNode statistics: "+ _id.nodeId() +". Packets sent: "+sentPackets + ". Packets recv: "+recvPackets+"\n");
 	}
 	
 	

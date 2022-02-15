@@ -69,12 +69,32 @@ public class Node extends SimEnt {
 				send(this, new TimerEvent(),_timeBetweenSending);
 				System.out.println("Node "+_id.networkId()+ "." + _id.nodeId() +" sent message with seq: "+_seq + " at time "+SimEngine.getTime());
 				_seq++;
+				
+				statisticsSend();
 			}
 		}
+			
 		if (ev instanceof Message)
 		{
 			System.out.println("Node "+_id.networkId()+ "." + _id.nodeId() +" receives message with seq: "+((Message) ev).seq() + " at time "+SimEngine.getTime());
 			
+			statisticsRecv();
 		}
+		
+		System.out.println("Node: "+ _id.nodeId() +". Packets sent: "+sentPackets + ". Packets recv: "+recvPackets);
+	}
+	
+//**********************************************************************************	
+	protected int sentPackets = 0;
+	protected int recvPackets = 0;
+	
+	// Statistics regarding sent packets
+	protected void statisticsSend() {
+		++sentPackets;
+	}
+	
+	// Statistics regarding received packets
+	protected void statisticsRecv() {
+		++recvPackets;
 	}
 }
