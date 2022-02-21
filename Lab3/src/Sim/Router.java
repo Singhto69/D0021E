@@ -1,5 +1,7 @@
 package Sim;
 
+import Sim.CustomEvents.ChangeInterfaceEvent;
+
 // This class implements a simple router
 
 public class Router extends SimEnt{
@@ -29,6 +31,20 @@ public class Router extends SimEnt{
 			System.out.println("Trying to connect to port not in router");
 		
 		((Link) link).setConnector(this);
+	}
+	
+	private void printInterfaces(){
+		System.out.println("");
+		for ( int i = 0 ; i < _interfaces; i++){
+			if(_routingTable[i] == null) {
+				System.out.println("INTERFACE " + i + ": null");
+			}else {
+				int nodeId = ((Node)_routingTable[i].node()).getAddr().nodeId();
+				int networkId = ((Node)_routingTable[i].node()).getAddr().networkId();
+				System.out.println("INTERFACE " + i + ": " + networkId + "." + nodeId);
+			}
+		}
+		System.out.println("");
 	}
 
 	// This method searches for an entry in the routing table that matches
@@ -60,7 +76,36 @@ public class Router extends SimEnt{
 			SimEnt sendNext = getInterface(((Message) event).destination().networkId());
 			System.out.println("Router sends to node: " + ((Message) event).destination().networkId()+"." + ((Message) event).destination().nodeId());		
 			send (sendNext, event, _now);
+		}
+		
+		//If node wants to change interface
+		if (event instanceof ChangeInterfaceEvent){
+			printInterfaces();
+			
+			Node node = ((ChangeInterfaceEvent) event).ent();
+			int newInterface = ((ChangeInterfaceEvent) event).newInterface();
+			
+			//Will crash if not found
+			_routingTable[getInterfaceNumber(node.getAddr().networkId())] = null;
+			connectInterface(newInterface, node._peer, node);
+			
+			System.out.println("Changing the router table");
+			
+			printInterfaces();
+		}
+	}
 	
-		}	
+	private int getInterfaceNumber(int networkAddress)
+	{
+		for(int i=0; i<_interfaces; i++)
+			if (_routingTable[i] != null)
+			{
+				if (((Node) _routingTable[i].node()).getAddr().networkId() == networkAddress)
+				{
+					 return i;
+				}
+			}
+		//Error handling
+		return -1;
 	}
 }

@@ -1,5 +1,7 @@
 package Sim;
 
+import Sim.CustomEvents.ChangeInterfaceEvent;
+
 // This class implements a link without any loss, jitter or delay
 
 public class Link extends SimEnt{
@@ -27,7 +29,7 @@ public class Link extends SimEnt{
 	
 	public void recv(SimEnt src, Event ev)
 	{
-		if (ev instanceof Message)
+		if (ev instanceof Message || ev instanceof ChangeInterfaceEvent)
 		{
 			System.out.println("Link recv msg, passes it through");
 			if (src == _connectorA)

@@ -1,5 +1,7 @@
 package Sim;
 
+import Sim.CustomEvents.ChangeInterfaceEvent;
+
 // This class implements a node (host) it has an address, a peer that it communicates with
 // and it count messages send and received.
 
@@ -27,6 +29,12 @@ public class Node extends SimEnt {
 		{
 			 ((Link) _peer).setConnector(this);
 		}
+	}
+	
+	public boolean changeInterface(int newInterface) {
+		send(_peer, new ChangeInterfaceEvent(this, newInterface), 0);
+		
+		return true;
 	}
 	
 	
@@ -72,6 +80,10 @@ public class Node extends SimEnt {
 				
 				statisticsSend();
 			}
+			
+			if(_sentmsg == _stopSendingAfter/2) {
+				changeInterface(2);
+			}
 		}
 			
 		if (ev instanceof Message)
@@ -81,7 +93,7 @@ public class Node extends SimEnt {
 			statisticsRecv();
 		}
 		
-		System.out.println("Node: "+ _id.nodeId() +". Packets sent: "+sentPackets + ". Packets recv: "+recvPackets);
+		//System.out.println("Node: "+ _id.nodeId() +". Packets sent: "+sentPackets + ". Packets recv: "+recvPackets);
 	}
 	
 //**********************************************************************************	
