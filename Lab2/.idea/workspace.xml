@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81c4d75c-fe4b-4322-b57d-d8e488c122c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Sim/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Sim/Run.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sim/Lossylink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/Lossylink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sim/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/SimEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/SimEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/SimEnt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/SimEnt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -34,8 +42,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Run">
     <configuration name="Run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Sim.Run" />
       <module name="Simulator" />
@@ -48,6 +60,27 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="graph" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Simulator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graph.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
@@ -80,34 +113,95 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Project_Structure" timestamp="1645720725153">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1645720725153" />
+    <state x="0" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1645720874154">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1645720874154" />
     <state x="446" y="50" key="#com.intellij.ide.util.MemberChooser" timestamp="1643795284286">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="50" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1643795284286" />
-    <state x="490" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1643793663569">
+    <state x="490" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1645720693650">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="490" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1643793663569" />
-    <state width="1237" height="161" key="GridCell.Tab.0.bottom" timestamp="1643796896410">
+    <state x="490" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1645720693650" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1645720828012">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1643796896410" />
-    <state width="1237" height="161" key="GridCell.Tab.0.center" timestamp="1643796896409">
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1645720828012" />
+    <state width="1237" height="214" key="GridCell.Tab.0.bottom" timestamp="1645789938256">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1643796896409" />
-    <state width="1237" height="161" key="GridCell.Tab.0.left" timestamp="1643796896409">
+    <state width="1237" height="214" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1645789938256" />
+    <state width="1237" height="214" key="GridCell.Tab.0.center" timestamp="1645789938256">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1643796896409" />
-    <state width="1237" height="161" key="GridCell.Tab.0.right" timestamp="1643796896410">
+    <state width="1237" height="214" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1645789938256" />
+    <state width="1237" height="214" key="GridCell.Tab.0.left" timestamp="1645789938256">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1643796896410" />
-    <state x="336" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1643793647066">
+    <state width="1237" height="214" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1645789938256" />
+    <state width="1237" height="214" key="GridCell.Tab.0.right" timestamp="1645789938256">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="336" y="172" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1643793647066" />
+    <state width="1237" height="214" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1645789938256" />
+    <state width="1237" height="194" key="GridCell.Tab.1.bottom" timestamp="1645725524369">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="194" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1645725524369" />
+    <state width="1237" height="194" key="GridCell.Tab.1.center" timestamp="1645725524369">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="194" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1645725524369" />
+    <state width="1237" height="194" key="GridCell.Tab.1.left" timestamp="1645725524369">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="194" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1645725524369" />
+    <state width="1237" height="194" key="GridCell.Tab.1.right" timestamp="1645725524369">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="194" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1645725524369" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1645720830449">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1645720830449" />
+    <state x="336" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1646305562084">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="336" y="172" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1646305562084" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

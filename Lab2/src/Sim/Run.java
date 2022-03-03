@@ -4,11 +4,12 @@ import Sim.CustomClasses.Lossylink;
 import Sim.CustomClasses.NodeGaussian;
 import Sim.CustomClasses.NodePoisson;
 
+import java.io.IOException;
+
 // An example of how to build a topology and starting the simulation engine
 
 public class Run {
-	public static void main (String [] args)
-	{
+	public static void main (String [] args) throws IOException {
  		//Creates two links
 		Lossylink link1 = new Lossylink(10, 1, 0d);
 		Lossylink link2 = new Lossylink(5, 1, 0d);
@@ -42,7 +43,7 @@ public class Run {
 		
 		// Generate some traffic
 		// host1 will send 3 messages with time interval 5 to network 2, node 1. Sequence starts with number 1
-		host1.StartSending(2, 2, 3, 5, 1); 
+		host1.StartSending(2, 2, 50, 5, 1);
 		
 		// host2 will not send anything, since its a sink.
 		//host2.StartSending(1, 1, 0, 0, 10); 

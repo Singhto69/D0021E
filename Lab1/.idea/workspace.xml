@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81c4d75c-fe4b-4322-b57d-d8e488c122c4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="81c4d75c-fe4b-4322-b57d-d8e488c122c4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,9 +99,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="161" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1643797180327" />
-    <state x="336" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1644573687302">
+    <state x="336" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1645635444301">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="336" y="172" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1644573687302" />
+    <state x="336" y="172" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1645635444301" />
   </component>
 </project>
