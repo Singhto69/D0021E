@@ -1,5 +1,6 @@
 package Sim;
 
+import java.io.IOException;
 import java.util.TreeMap;
 
 // This class implements the simulation engine
@@ -89,7 +90,11 @@ public final class SimEngine implements Runnable {
 				handleToNextEvent = (EventHandle) _simTimeTree.get(nextEventToExecute);
 				_simTime=nextEventToExecute._msek;
 				handleToNextEvent._event.entering(handleToNextEvent._target);
-				handleToNextEvent._target.recv(handleToNextEvent._registrator, handleToNextEvent._event);
+				try {
+					handleToNextEvent._target.recv(handleToNextEvent._registrator, handleToNextEvent._event);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				deregister(handleToNextEvent);
 			}
 		} while (!_quit);

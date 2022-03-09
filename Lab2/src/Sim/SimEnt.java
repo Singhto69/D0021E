@@ -3,6 +3,8 @@ package Sim;
 // All entities like, nodes, switch, router, link etc that handles events
 // need to inherit from this class
 
+import java.io.IOException;
+
 public abstract class SimEnt {
 	
 
@@ -44,6 +46,6 @@ public abstract class SimEnt {
 	
 	// To be implemented in child classes acting on events/messages received
 	
-	public abstract void recv(SimEnt source, Event event);
+	public abstract void recv(SimEnt source, Event event) throws IOException;
 	
 }

@@ -33,7 +33,7 @@ public class Router extends SimEnt{
 		((Link) link).setConnector(this);
 	}
 	
-	private void printInterfaces(){
+	public void printInterfaces(){
 		System.out.println("");
 		for ( int i = 0 ; i < _interfaces; i++){
 			if(_routingTable[i] == null) {

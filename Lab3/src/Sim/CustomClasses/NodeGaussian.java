@@ -34,7 +34,7 @@ public class NodeGaussian extends Node {
 				send(_peer, new Message(_id, new NetworkAddr(_toNetwork, _toHost),_seq),0);
 				
 				//Normal Distribution with (5) mean and (2) in st.d.
-				send(this, new TimerEvent(),_timeBetweenSending + rand.nextGaussian(mu,sigma));
+				send(this, new TimerEvent(),_timeBetweenSending + rand.nextGaussian());
 				
 				System.out.println("Node "+_id.networkId()+ "." + _id.nodeId() +" sent message with seq: "+_seq + " at time "+SimEngine.getTime());
 				_seq++;

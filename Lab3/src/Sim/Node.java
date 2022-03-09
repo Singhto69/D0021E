@@ -11,7 +11,8 @@ public class Node extends SimEnt {
 	protected int _sentmsg=0;
 	protected int _seq = 0;
 
-	
+
+
 	public Node (int network, int node)
 	{
 		super();
@@ -33,7 +34,6 @@ public class Node extends SimEnt {
 	
 	public boolean changeInterface(int newInterface) {
 		send(_peer, new ChangeInterfaceEvent(this, newInterface), 0);
-		
 		return true;
 	}
 	
@@ -51,6 +51,17 @@ public class Node extends SimEnt {
 	protected int _timeBetweenSending = 10; //time between messages
 	protected int _toNetwork = 0;
 	protected int _toHost = 0;
+
+	protected boolean changeinterfaceboolean;
+	protected int _changeInterfaceWhen = 0;
+	protected int _newinterface = 0;
+
+
+	public void changeInterFaceWhen(int changeInterfaceWhen, int newinterface){
+		_changeInterfaceWhen = changeInterfaceWhen;
+		changeinterfaceboolean = true;
+		_newinterface = newinterface;
+	}
 	
 	public void StartSending(int network, int node, int number, int timeInterval, int startSeq)
 	{
@@ -81,15 +92,16 @@ public class Node extends SimEnt {
 				statisticsSend();
 			}
 			
-			if(_sentmsg == _stopSendingAfter/2) {
-				changeInterface(2);
+			if(_sentmsg == _changeInterfaceWhen && changeinterfaceboolean) {
+				changeInterface(_newinterface);
+				changeinterfaceboolean = false;
 			}
 		}
 			
 		if (ev instanceof Message)
 		{
 			System.out.println("Node "+_id.networkId()+ "." + _id.nodeId() +" receives message with seq: "+((Message) ev).seq() + " at time "+SimEngine.getTime());
-			
+
 			statisticsRecv();
 		}
 		
