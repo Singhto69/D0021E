@@ -1,53 +1,58 @@
 package Sim;
 
-import Sim.CustomClasses.Lossylink;
-import Sim.CustomClasses.NodeGaussian;
-import Sim.CustomClasses.NodePoisson;
-
 // An example of how to build a topology and starting the simulation engine
 
 public class Run {
 	public static void main (String [] args)
 	{
- 		//Creates two links
-		//Lossylink link1 = new Lossylink(10, 1, 0d);
-		//Lossylink link2 = new Lossylink(5, 1, 0d);
-		Link link1 = new Link();
-		Link link2 = new Link();
+		Link a = new Link();
+		Link b = new Link();
+		Link c = new Link();
+		Link d = new Link();
 		
-		// Create two end hosts that will be
-		// communicating via the router
-		//CBR
-		Node host1 = new Node(1,1);
-		Node host2 = new Node(2,2);
+		Link swLink1 = new Link();
+		Link swLink2 = new Link();
 		
-		//Gaussian
-		//NodeGaussian host1 = new NodeGaussian(1,1, 5, 2);
-		//NodeGaussian host2 = new NodeGaussian(2,1, 5, 2);
+		Link r = new Link();
 		
-		//Poisson
-		//NodePoisson host1 = new NodePoisson(1,1, 5);
-		//NodePoisson host2 = new NodePoisson(2,1, 5);
+		Node A = new Node(1,1);
+		Node B = new Node(1,2);
+		Node C = new Node(1,3);
+		
+		Node D = new Node(2,1);
 
 		//Connect links to hosts
-		host1.setPeer(link1);
-		host2.setPeer(link2);
-
-		// Creates as router and connect
-		// links to it. Information about 
-		// the host connected to the other
-		// side of the link is also provided
-		// Note. A switch is created in same way using the Switch class
-		Router routeNode = new Router(3);
-		routeNode.connectInterface(0, link1, host1);
-		routeNode.connectInterface(1, link2, host2);
+		A.setPeer(a);
+		B.setPeer(b);
+		C.setPeer(c);
+		D.setPeer(d);
 		
-		// Generate some traffic
-		// host1 will send 3 messages with time interval 5 to network 2, node 1. Sequence starts with number 1
-		host1.StartSending(2, 2, 10, 5, 1); 
+		Router R1 = new Router(4, 1);
+		Router R2 = new Router(4, 2);
 		
-		// host2 will not send anything, since its a sink.
-		//host2.StartSending(1, 1, 0, 0, 10); 
+		//Routers to each other
+		R1.connectInterface(3, r, R2);
+		R2.connectInterface(3, r, R1);
+		
+		//Network 1
+		Switch sw1 = new Switch(4);
+		sw1.connectPort(0, swLink1, R1);
+		sw1.connectPort(1, a, A);
+		sw1.connectPort(2, b, B);
+		sw1.connectPort(3, c, C);
+		
+		//Network 2
+		Switch sw2 = new Switch(4);
+		sw2.connectPort(0, swLink2, R2);
+		sw2.connectPort(1, d, D);
+		
+		R1.connectInterface(0, swLink1, sw1);
+		R2.connectInterface(0, swLink2, sw2);
+		
+		D.StartSending(B.getAddr().networkId(), B.getAddr().nodeId(), 5, 5, 1); 
+		
+		//B.send(R2, new ChangeNetworkEvent(R2, D), 12);
+		//D.StartSending(1, 1, 2, 2, 1); 
 		
 		// Start the simulation engine and of we go!
 		Thread t=new Thread(SimEngine.instance());
@@ -61,8 +66,5 @@ public class Run {
 		{
 			System.out.println("The motor seems to have a problem, time for service?");
 		}		
-
-
-
 	}
 }

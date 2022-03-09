@@ -81,9 +81,9 @@ public class Node extends SimEnt {
 				statisticsSend();
 			}
 			
-			if(_sentmsg == _stopSendingAfter/2) {
-				changeInterface(2);
-			}
+			//if(_sentmsg == _stopSendingAfter/2) {
+			//	changeInterface(2);
+			//}
 		}
 			
 		if (ev instanceof Message)

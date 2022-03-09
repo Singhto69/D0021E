@@ -1,5 +1,7 @@
 package Sim;
 
+import Sim.CustomEvents.ChangeNetworkEvent;
+
 // This class implements a simple switch
 
 public class Switch extends SimEnt{
@@ -36,7 +38,7 @@ public class Switch extends SimEnt{
 	
 	private SimEnt getPort(int nodeAddress)
 	{
-		SimEnt port=null;
+		SimEnt port = _switchTable[0].link();
 		for(int i=0; i<_ports; i++)
 			if (_switchTable[i] != null)
 			{
@@ -59,7 +61,6 @@ public class Switch extends SimEnt{
 			SimEnt sendNext = getPort(((Message) event).destination().nodeId());
 			System.out.println("Switch forwards to host: " + ((Message) event).destination().nodeId());		
 			send (sendNext, event, 0);
-	
-		}	
+		}
 	}
 }
