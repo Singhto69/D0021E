@@ -24,4 +24,15 @@ public class NetworkAddr {
 	{
 		return _nodeId;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		NetworkAddr rhs = (NetworkAddr)o;
+		return (this._networkId == rhs._networkId) && (this._nodeId == rhs._nodeId);
+	}
+	
+	@Override
+	public int hashCode() {
+		return 10 * _networkId + _nodeId;
+	}
 }

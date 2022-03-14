@@ -1,5 +1,7 @@
 package Sim;
 
+import java.util.HashMap;
+
 import Sim.CustomEvents.ChangeInterfaceEvent;
 import Sim.CustomEvents.ChangeNetworkEvent;
 
@@ -12,6 +14,8 @@ public class Router extends Node{
 	private int _interfaces;
 	private int _now=0;
 	private int _networkId = 0;
+	
+	private HashMap<NetworkAddr, NetworkAddr> bindings = new HashMap<NetworkAddr, NetworkAddr>();
 
 	// When created, number of interfaces are defined
 	
@@ -28,15 +32,15 @@ public class Router extends Node{
 	}
 	
 	//Connects to the first available interface
-	public boolean connectNextInterface(SimEnt link, SimEnt node) {
+	public int connectNextInterface(SimEnt link, SimEnt node) {
 		for(int i = 0; i < _routingTable.length; i++) {
 			if(_routingTable[i] == null) {
 				_routingTable[i] = new RouteTableEntry(link, node);
-				return true;
+				return i;
 			}
 		}
 		
-		return false;
+		return -1;
 	}
 	
 	// This method connects links to the router and also informs the 
@@ -71,7 +75,7 @@ public class Router extends Node{
 	// the network number in the destination field of a messages. The link
 	// represents that network number is returned
 	
-	private SimEnt getInterface(int networkAddress)
+	private SimEnt getInterface(NetworkAddr addr)
 	{
 		//Default gateway
 		SimEnt routerInterface=_routingTable[0].link();
@@ -79,9 +83,11 @@ public class Router extends Node{
 			if (_routingTable[i] != null)
 			{
 				SimEnt ent = _routingTable[i].node();
-				if (ent instanceof Node && ((Node) ent).getAddr().networkId() == networkAddress)
+				if (ent instanceof Node && ((Node) ent).getAddr().networkId() == addr.networkId())
 				{
-					routerInterface = _routingTable[i].link();
+					if(((Node) ent).getAddr().nodeId() == addr.nodeId()) {
+						return routerInterface = _routingTable[i].link();
+					}
 				}
 			}
 		return routerInterface;
@@ -92,10 +98,24 @@ public class Router extends Node{
 	
 	public void recv(SimEnt source, Event event)
 	{
+		System.out.println("event instanceof Message: "+(event instanceof Message));
 		if (event instanceof Message)
 		{
-			System.out.println("Router handles packet with seq: " + ((Message) event).seq()+" from node: "+((Message) event).source().networkId()+"." + ((Message) event).source().nodeId() );
-			SimEnt sendNext = getInterface(((Message) event).destination().networkId());
+			Message e = (Message) event;
+			
+			if(e.ttl > 5) return;
+			e.ttl++;
+			
+			NetworkAddr destIp = e.destination();
+			
+			System.out.println("Router ("+ networkId() +") handles packet with seq: " + e.seq()+" from node: "+e.source().networkId()+"." + e.source().nodeId());
+			if(bindings.containsKey(destIp)) 
+			{
+				NetworkAddr newIp = bindings.get(destIp);
+				System.out.println("\nRedirects from " + destIp.networkId()+"."+destIp.nodeId()+" to "+newIp.networkId()+"."+newIp.nodeId()+"\n");
+				destIp = bindings.get(destIp);
+			}
+			SimEnt sendNext = getInterface(destIp);
 			System.out.println("Router ("+ networkId() +") sends to node: " + sendNext);		
 			send (sendNext, event, _now);
 		}
@@ -118,19 +138,27 @@ public class Router extends Node{
 		
 		//If node wants to move network.
 		if(event instanceof ChangeNetworkEvent) {
-			Router homeAgent = ((ChangeNetworkEvent)event).homeAgent();
-			Node mobileNode = ((ChangeNetworkEvent)event).source();
+			Node mobileNode = (Node) source;
+			Router homeAgent = ((ChangeNetworkEvent) event).homeAgent();
 			
-			//Node need to be linked to the router, added to routing table, connected to Home Agent.
-			Link link = new Link();
-			mobileNode.setPeer(link);
+			Link newlink = new Link();
+			NetworkAddr homeAddress = mobileNode.getAddr();
+			int newNodeId = connectNextInterface(newlink, mobileNode);
 			
-			if (connectNextInterface(link, mobileNode)) {
+			if (newNodeId == -1) {
 				System.out.println("Connecting the mobile node to a new interface failed");
 				return;
 			};
 			
-			//homeAgent.
+			//Node need to be linked to the router, added to routing table, connected to Home Agent.
+			mobileNode.setPeer(newlink);
+			mobileNode._id = new NetworkAddr(_networkId, newNodeId);
+			
+			NetworkAddr CoA = mobileNode.getAddr();
+			
+			homeAgent.bindings.put(homeAddress, CoA);
+			
+			System.out.println("\nConnecting the mobile node to new network\n");
 		}
 	}
 	
