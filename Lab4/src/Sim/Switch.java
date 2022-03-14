@@ -57,10 +57,10 @@ public class Switch extends SimEnt{
 		for(int i=0; i<_ports; i++)
 			if (_switchTable[i] != null)
 			{
-				if (((Node) _switchTable[i].node()).getAddr().nodeId() == nodeAddress)
-				{
-					port = i;
-				}
+//				if (((Node) _switchTable[i].node()).getAddr().nodeId() == nodeAddress)
+//				{
+//					port = i;
+//				}
 			}
 		return port;
 	}

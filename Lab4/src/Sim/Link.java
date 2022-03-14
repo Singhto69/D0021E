@@ -41,5 +41,9 @@ public class Link extends SimEnt{
 				send(_connectorA, ev, _now);
 			}
 		}
-	}	
+	}
+	
+	public String toString() {
+		return "A: " + _connectorA + " - " + "B: "+_connectorB;
+	}
 }

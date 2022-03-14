@@ -43,6 +43,10 @@ public class Node extends SimEnt {
 		return _id;
 	}
 	
+	public String toString() {
+		return ""+_id;
+	}
+	
 //**********************************************************************************	
 	// Just implemented to generate some traffic for demo.
 	// In one of the labs you will create some traffic generators

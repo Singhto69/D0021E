@@ -36,6 +36,7 @@ public class Router extends Node{
 		for(int i = 0; i < _routingTable.length; i++) {
 			if(_routingTable[i] == null) {
 				_routingTable[i] = new RouteTableEntry(link, node);
+				((Link) link).setConnector(this);
 				return i;
 			}
 		}
@@ -62,10 +63,8 @@ public class Router extends Node{
 		for ( int i = 0 ; i < _interfaces; i++){
 			if(_routingTable[i] == null) {
 				System.out.println("INTERFACE " + i + ": null");
-			}else {
-				int nodeId = ((Node)_routingTable[i].node()).getAddr().nodeId();
-				int networkId = ((Node)_routingTable[i].node()).getAddr().networkId();
-				System.out.println("INTERFACE " + i + ": " + networkId + "." + nodeId);
+			}else {;
+				System.out.println("INTERFACE " + i + ": " + _routingTable[i]);
 			}
 		}
 		System.out.println("");
@@ -98,7 +97,6 @@ public class Router extends Node{
 	
 	public void recv(SimEnt source, Event event)
 	{
-		System.out.println("event instanceof Message: "+(event instanceof Message));
 		if (event instanceof Message)
 		{
 			Message e = (Message) event;
@@ -108,32 +106,21 @@ public class Router extends Node{
 			
 			NetworkAddr destIp = e.destination();
 			
+			//printInterfaces();
 			System.out.println("Router ("+ networkId() +") handles packet with seq: " + e.seq()+" from node: "+e.source().networkId()+"." + e.source().nodeId());
+			System.out.println("DestIp before: " + destIp.networkId() +"."+destIp.nodeId());
 			if(bindings.containsKey(destIp)) 
 			{
 				NetworkAddr newIp = bindings.get(destIp);
 				System.out.println("\nRedirects from " + destIp.networkId()+"."+destIp.nodeId()+" to "+newIp.networkId()+"."+newIp.nodeId()+"\n");
 				destIp = bindings.get(destIp);
+				e.seDestination(destIp);
 			}
+			System.out.println("DestIp after: " + destIp.networkId() +"."+destIp.nodeId());
+			
 			SimEnt sendNext = getInterface(destIp);
-			System.out.println("Router ("+ networkId() +") sends to node: " + sendNext);		
+			System.out.println("Router ("+ networkId() +") sends to link: " + sendNext);		
 			send (sendNext, event, _now);
-		}
-		
-		//If node wants to change interface
-		if (event instanceof ChangeInterfaceEvent){
-			printInterfaces();
-			
-			Node node = ((ChangeInterfaceEvent) event).ent();
-			int newInterface = ((ChangeInterfaceEvent) event).newInterface();
-			
-			//Will crash if not found
-			_routingTable[getInterfaceNumber(node.getAddr().networkId())] = null;
-			connectInterface(newInterface, node._peer, node);
-			
-			System.out.println("Changing the router table");
-			
-			printInterfaces();
 		}
 		
 		//If node wants to move network.
@@ -150,9 +137,13 @@ public class Router extends Node{
 				return;
 			};
 			
+			homeAgent.removeInterface(mobileNode);
+			
 			//Node need to be linked to the router, added to routing table, connected to Home Agent.
 			mobileNode.setPeer(newlink);
 			mobileNode._id = new NetworkAddr(_networkId, newNodeId);
+			
+			System.out.println("newlink:_"+ newlink);
 			
 			NetworkAddr CoA = mobileNode.getAddr();
 			
@@ -162,17 +153,16 @@ public class Router extends Node{
 		}
 	}
 	
-	public void moveNodeConn(Node node, SimEnt newConn) {
-		_routingTable[getInterfaceNumber(node.getAddr().networkId())] = null;
-		connectNextInterface(node._peer, node);
+	public void removeInterface(Node node) {
+		_routingTable[getInterfaceNumber(node.getAddr())] = null;
 	}
 	
-	private int getInterfaceNumber(int networkAddress)
+	private int getInterfaceNumber(NetworkAddr networkAddress)
 	{
 		for(int i=0; i<_interfaces; i++)
 			if (_routingTable[i] != null)
 			{
-				if (((Node) _routingTable[i].node()).getAddr().networkId() == networkAddress)
+				if (((Node) _routingTable[i].node()).getAddr() == networkAddress)
 				{
 					 return i;
 				}

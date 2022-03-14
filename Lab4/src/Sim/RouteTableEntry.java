@@ -21,4 +21,8 @@ public class RouteTableEntry extends TableEntry{
 		return super.node();
 	}
 	
+	public String toString() {
+		return ""+super.link();
+	}
+	
 }

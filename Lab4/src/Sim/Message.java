@@ -23,6 +23,11 @@ public class Message implements Event{
 		return _source; 
 	}
 	
+	public void seDestination(NetworkAddr addr)
+	{
+		_destination = addr;
+	}
+	
 	public NetworkAddr destination()
 	{
 		return _destination; 

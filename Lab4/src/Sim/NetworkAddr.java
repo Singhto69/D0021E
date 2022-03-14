@@ -35,4 +35,8 @@ public class NetworkAddr {
 	public int hashCode() {
 		return 10 * _networkId + _nodeId;
 	}
+	
+	public String toString() {
+		return networkId() + "." + nodeId();
+	}
 }
