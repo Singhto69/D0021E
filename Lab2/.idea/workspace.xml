@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81c4d75c-fe4b-4322-b57d-d8e488c122c4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sim/CustomClasses/NodeGaussian.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sim/CustomClasses/NodeGaussian.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sim/CustomClasses/NodePoisson.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sim/CustomClasses/NodePoisson.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sim/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sim/Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sim/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sim/Run.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logcbr.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logcbr.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loggaussian.txt" beforeDir="false" afterPath="$PROJECT_DIR$/loggaussian.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logpoisson.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logpoisson.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sim/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sim/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab3/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="81c4d75c-fe4b-4322-b57d-d8e488c122c4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,10 +170,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1645720830449" />
-    <state x="336" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1646645703953">
+    <state x="336" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1647262683256">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="336" y="172" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1646645703953" />
+    <state x="336" y="172" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1647262683256" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
