@@ -15,14 +15,14 @@ def parser(file):
         if line[0] == "s":
             line = line[6:]
             line = line.split(":")
-            sx = numpy.append(sx, int(numpy.asarray([line[0]]))).astype(int)
-            sy = numpy.append(sy, int(numpy.asarray([line[1]]))).astype(int)
+            sx = numpy.append(sx, float(numpy.asarray([line[0]]))).astype(float)
+            sy = numpy.append(sy, float(numpy.asarray([line[1]]))).astype(float)
 
         else:
             line = line[6:]
             line = line.split(":")
-            rx = numpy.append(rx, int(numpy.asarray([line[0]]))).astype(int)
-            ry = numpy.append(ry, int(numpy.asarray([line[1]]))).astype(int)
+            rx = numpy.append(rx, float(numpy.asarray([line[0]]))).astype(float)
+            ry = numpy.append(ry, float(numpy.asarray([line[1]]))).astype(float)
 
     return sx, sy, rx, ry
 
@@ -30,7 +30,7 @@ def parser(file):
 x = numpy.array([])
 x2 = numpy.append(x, numpy.array([1]))
 
-cbrsx, cbrsy, cbrrx, cbrry = parser(open("../logcbr.txt", "r"))
+#cbrsx, cbrsy, cbrrx, cbrry = parser(open("../logcbr.txt", "r"))
 gausx, gausy, gaurx, gaury = parser(open("../loggaussian.txt", "r"))
 poisx, poisy, poirx, poiry = parser(open("../logpoisson.txt", "r"))
 
@@ -39,8 +39,8 @@ def plot(sx, sy, rx, ry):
     plt.title("Line graph")
     plt.xlabel("X axis")
     plt.ylabel("Y axis")
-    plt.plot(sx, sy, color="green")
-    plt.plot(rx, ry, color="red")
+    plt.scatter(sx, sy, color="green")
+    plt.scatter(rx, ry, color="red")
     plt.show()
 
 

@@ -19,14 +19,17 @@ public class Run {
 		//CBR
 		//Node host1 = new Node(1,1);
 		//Node host2 = new Node(2,1);
+		//host1.hashmaplogfile();
 		
 		//Gaussian
 		//NodeGaussian host1 = new NodeGaussian(1,1, 5, 2);
 		//NodeGaussian host2 = new NodeGaussian(2,1, 5, 2);
+
 		
 		//Poisson
 		NodePoisson host1 = new NodePoisson(1,1, 5);
 		NodePoisson host2 = new NodePoisson(2,1, 5);
+
 
 		//Connect links to hosts
 		host1.setPeer(link1);
@@ -43,7 +46,7 @@ public class Run {
 		
 		// Generate some traffic
 		// host1 will send 3 messages with time interval 5 to network 2, node 1. Sequence starts with number 1
-		host1.StartSending(2, 2, 50, 5, 1);
+		host1.StartSending(2, 2, 100000, 5, 1);
 		
 		// host2 will not send anything, since its a sink.
 		//host2.StartSending(1, 1, 0, 0, 10); 

@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81c4d75c-fe4b-4322-b57d-d8e488c122c4" name="Default Changelist" comment="" />
+    <list default="true" id="81c4d75c-fe4b-4322-b57d-d8e488c122c4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sim/CustomClasses/NodeGaussian.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sim/CustomClasses/NodeGaussian.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sim/CustomClasses/NodePoisson.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sim/CustomClasses/NodePoisson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sim/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sim/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sim/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/Sim/Run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logcbr.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logcbr.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loggaussian.txt" beforeDir="false" afterPath="$PROJECT_DIR$/loggaussian.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logpoisson.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logpoisson.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sim/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sim/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab3/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,59 +150,84 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1645720828012" />
-    <state width="1237" height="214" key="GridCell.Tab.0.bottom" timestamp="1645789938256">
+    <state width="1237" height="124" key="GridCell.Tab.0.bottom" timestamp="1646652237237">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="214" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1645789938256" />
-    <state width="1237" height="214" key="GridCell.Tab.0.center" timestamp="1645789938256">
+    <state width="1237" height="124" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1646652237237" />
+    <state width="1237" height="124" key="GridCell.Tab.0.center" timestamp="1646652237237">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="214" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1645789938256" />
-    <state width="1237" height="214" key="GridCell.Tab.0.left" timestamp="1645789938256">
+    <state width="1237" height="124" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1646652237237" />
+    <state width="1237" height="124" key="GridCell.Tab.0.left" timestamp="1646652237237">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="214" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1645789938256" />
-    <state width="1237" height="214" key="GridCell.Tab.0.right" timestamp="1645789938256">
+    <state width="1237" height="124" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1646652237237" />
+    <state width="1237" height="124" key="GridCell.Tab.0.right" timestamp="1646652237237">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="214" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1645789938256" />
-    <state width="1237" height="194" key="GridCell.Tab.1.bottom" timestamp="1645725524369">
+    <state width="1237" height="124" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1646652237237" />
+    <state width="1237" height="124" key="GridCell.Tab.1.bottom" timestamp="1646652237237">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="194" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1645725524369" />
-    <state width="1237" height="194" key="GridCell.Tab.1.center" timestamp="1645725524369">
+    <state width="1237" height="124" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1646652237237" />
+    <state width="1237" height="124" key="GridCell.Tab.1.center" timestamp="1646652237237">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="194" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1645725524369" />
-    <state width="1237" height="194" key="GridCell.Tab.1.left" timestamp="1645725524369">
+    <state width="1237" height="124" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1646652237237" />
+    <state width="1237" height="124" key="GridCell.Tab.1.left" timestamp="1646652237237">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="194" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1645725524369" />
-    <state width="1237" height="194" key="GridCell.Tab.1.right" timestamp="1645725524369">
+    <state width="1237" height="124" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1646652237237" />
+    <state width="1237" height="124" key="GridCell.Tab.1.right" timestamp="1646652237237">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="194" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1645725524369" />
+    <state width="1237" height="124" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1646652237237" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1645720830449">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1645720830449" />
-    <state x="336" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1646305848771">
+    <state x="336" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1646645703953">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="336" y="172" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1646305848771" />
+    <state x="336" y="172" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1646645703953" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodePoisson.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Sim/CustomClasses/NodeGaussian.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

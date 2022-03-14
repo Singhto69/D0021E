@@ -7,6 +7,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Node extends SimEnt {
     protected NetworkAddr _id;
@@ -18,6 +19,8 @@ public class Node extends SimEnt {
     public FileWriter logfile;
     private String dirName;
     private String fileName;
+
+    private HashMap<Double, Integer> seqtooffset;
 
     public Node(int network, int node) {
         super();
@@ -86,7 +89,7 @@ public class Node extends SimEnt {
                 send(_peer, new Message(_id, new NetworkAddr(_toNetwork, _toHost), _seq), 0);
                 send(this, new TimerEvent(), _timeBetweenSending);
                 System.out.println("Node " + _id.networkId() + "." + _id.nodeId() + " sent message with seq: " + _seq + " at time " + SimEngine.getTime());
-                logentry("s:" + _id.networkId() + ":" + +_id.nodeId() + ":" + _seq + ":" + (int) SimEngine.getTime());
+                logentry("s:" + _id.networkId() + ":" + +_id.nodeId() + ":" + 0 + ":" + _seq);
                 _seq++;
 
                 statisticsSend();
@@ -95,7 +98,8 @@ public class Node extends SimEnt {
 
         if (ev instanceof Message) {
             System.out.println("Node " + _id.networkId() + "." + _id.nodeId() + " receives message with seq: " + ((Message) ev).seq() + " at time " + SimEngine.getTime());
-            logentry("r:" + _id.networkId() + ":" + +_id.nodeId() + ":" + ((Message) ev).seq() + ":" + (int) SimEngine.getTime());
+            logentry("r:" + _id.networkId() + ":"  +_id.nodeId() + ":" + 0 + ":"
+                    + ((Message) ev).seq());
             statisticsRecv();
         }
 
