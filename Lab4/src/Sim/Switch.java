@@ -31,20 +31,35 @@ public class Switch extends SimEnt{
 		
 		((Link) link).setConnector(this);
 	}
+	
+	public void connectNextPort(SimEnt link, SimEnt node)
+	{
+		for(int i = 1; i<_switchTable.length; i++)
+		{
+			if(_switchTable[i] == null)
+			{
+				_switchTable[i] = new SwitchTableEntry(link, node);
+				((Link) link).setConnector(this);
+				return;
+			}
+		}
+		
+		System.out.println("\nSwitch is full! Can not connect more ports\n");
+	}
 
 	// This method searches for an entry in the switch-table that matches
 	// the host number in the destination field of a frame. The link
 	// that connects host the switch port is returned 
 	
-	private SimEnt getPort(int nodeAddress)
+	private int getPort(int nodeAddress)
 	{
-		SimEnt port = _switchTable[0].link();
+		int port = 0;
 		for(int i=0; i<_ports; i++)
 			if (_switchTable[i] != null)
 			{
 				if (((Node) _switchTable[i].node()).getAddr().nodeId() == nodeAddress)
 				{
-					port = _switchTable[i].link();
+					port = i;
 				}
 			}
 		return port;
@@ -55,10 +70,23 @@ public class Switch extends SimEnt{
 	
 	public void recv(SimEnt source, Event event)
 	{
+		if(event instanceof ChangeNetworkEvent) {
+//			Node sourceNode = ((ChangeNetworkEvent) event).source();
+//			int port = getPort(sourceNode.getAddr().nodeId());
+//			if(port != 0) {
+//				//TODO Ability to go back to original network
+//				_switchTable[port] = null;
+//
+//				SimEnt sendNext = _switchTable[0].link();
+//				send (sendNext, event, 0);
+//			}
+		}
+		
 		if (event instanceof Message)
 		{
 			System.out.println("Switch handles frame with seq: " + ((Message) event).seq() + " from node: "+ ((Message) event).source().nodeId());
-			SimEnt sendNext = getPort(((Message) event).destination().nodeId());
+			SimEnt link = _switchTable[getPort(((Message) event).destination().nodeId())].link();
+			SimEnt sendNext = link == null ? _switchTable[0].link() : link;
 			System.out.println("Switch forwards to host: " + ((Message) event).destination().nodeId());		
 			send (sendNext, event, 0);
 		}
