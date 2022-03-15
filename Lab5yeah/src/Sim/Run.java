@@ -32,7 +32,7 @@ public class Run {
         //Network 2
         R2.connectInterface(2, b, B);
 
-        A.TCP(B)
+        A.TCP(B.getAddr());
 
 
         // Start the simulation engine and of we go!

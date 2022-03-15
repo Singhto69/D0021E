@@ -61,9 +61,9 @@ public class Node extends SimEnt {
         send(this, new TimerEvent(), 0);
     }
 
-    public void TCP(SimEnt dst) {
+    public void TCP(NetworkAddr dst) {
 
-        send(this, new Message(this, dst, 1, 1, 0, 0), 0);
+        send(_peer, new Message(this.getAddr(), dst, 1, true, false, 0), 0);
     }
 
 
@@ -83,18 +83,28 @@ public class Node extends SimEnt {
                 statisticsSend();
             }
 
-            //if(_sentmsg == _stopSendingAfter/2) {
-            //	changeInterface(2);
-            //}
+
         }
 
         if (ev instanceof Message) {
             System.out.println("Node " + _id.networkId() + "." + _id.nodeId() + " receives message with seq: " + ((Message) ev).seq() + " at time " + SimEngine.getTime());
-
             statisticsRecv();
+
+
+            if (((Message) ev).synflag()) {
+                int seqnum = ((Message) ev).seq();
+                int acknum = ((Message) ev).ack();
+                NetworkAddr dst = ((Message) ev).source();
+
+                Message newMsg = new Message(_id, dst, seqnum);
+                send(((Message) ev).source(), )
+
+            }
+
+
         }
 
-        //System.out.println("Node: "+ _id.nodeId() +". Packets sent: "+sentPackets + ". Packets recv: "+recvPackets);
+        System.out.println("Node: " + _id.nodeId() + ". Packets sent: " + sentPackets + ". Packets recv: " + recvPackets);
     }
 
     //**********************************************************************************
