@@ -13,16 +13,12 @@ public class Lossylink extends Link{
     private SimEnt _connectorA=null;
     private SimEnt _connectorB=null;
     private int _now=0;
-    private int delay;
-    private int jitter;
     private double dropProbability;
     private Random rand;
 
-    public Lossylink(int delay, int jitter, double dropProbability)
+    public Lossylink(double dropProbability)
     {
         super();
-        this.delay = delay;
-        this.jitter = jitter;
         this.dropProbability = dropProbability;
         this.rand = new Random();
     }
@@ -44,13 +40,10 @@ public class Lossylink extends Link{
     {
         if (ev instanceof Message)
         {
-        	//Implement delay
-        	_now += delay + rand.nextInt(2)*jitter;
-        	
         	//Implement dropping
         	if(rand.nextDouble() > dropProbability)
         	{
-        		System.out.println("Link recv msg, passes it through");
+        		//System.out.println("Link recv msg, passes it through");
 	            if (src == _connectorA)
 	            {
 	                send(_connectorB, ev, _now);

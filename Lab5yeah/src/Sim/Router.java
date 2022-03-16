@@ -107,7 +107,7 @@ public class Router extends Node{
 			NetworkAddr destIp = e.destination();
 			
 			//printInterfaces();
-			System.out.println("Router ("+ networkId() +") handles packet with seq: " + e.seq()+" from node: "+e.source().networkId()+"." + e.source().nodeId());
+			//System.out.println("Router ("+ networkId() +") handles packet with seq: " + e.seq()+" from node: "+e.source().networkId()+"." + e.source().nodeId());
 			//System.out.println("DestIp before: " + destIp.networkId() +"."+destIp.nodeId());
 			if(bindings.containsKey(destIp)) 
 			{

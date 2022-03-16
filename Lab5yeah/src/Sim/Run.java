@@ -1,5 +1,6 @@
 package Sim;
 
+import Sim.CustomClasses.Lossylink;
 import Sim.CustomEvents.ChangeNetworkEvent;
 
 // An example of how to build a topology and starting the simulation engine
@@ -9,7 +10,8 @@ public class Run {
         Link a = new Link();
         Link b = new Link();
 
-        Link r = new Link();
+        //Link r = new Link();
+        Lossylink r = new Lossylink(0.5);
 
         Node A = new Node(1, 1);
         Node B = new Node(2, 1);
@@ -33,6 +35,7 @@ public class Run {
         R2.connectInterface(2, b, B);
 
         A.TCP(B.getAddr());
+        A.StartSending(B.getAddr().networkId(), B.getAddr().nodeId(), 2, 10, A._seq, 1, 50);
 
 
         // Start the simulation engine and of we go!

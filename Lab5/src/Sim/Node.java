@@ -63,7 +63,7 @@ public class Node extends SimEnt {
 
     public void TCP(SimEnt dst) {
 
-        send(this, new Message(this, dst, 1, 1, 0, 0), 0);
+        send(this, new Message(this, dst, true, true, 0, 0), 0);
     }
 
 
