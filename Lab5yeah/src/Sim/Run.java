@@ -11,11 +11,10 @@ public class Run {
         Link b = new Link();
 
         //Link r = new Link();
-        Lossylink r = new Lossylink(0.5);
+        Lossylink r = new Lossylink(0.2);
 
         Node A = new Node(1, 1);
         Node B = new Node(2, 1);
-
 
         //Connect links to hosts
         A.setPeer(a);
@@ -34,9 +33,7 @@ public class Run {
         //Network 2
         R2.connectInterface(2, b, B);
 
-        A.TCP(B.getAddr());
-        A.StartSending(B.getAddr().networkId(), B.getAddr().nodeId(), 2, 10, A._seq, 1, 50);
-
+        A.StartSending(B.getAddr().networkId(), B.getAddr().nodeId(), 10, 10, A._seq, 1, 50);
 
         // Start the simulation engine and of we go!
         Thread t = new Thread(SimEngine.instance());

@@ -57,7 +57,6 @@ public class Node extends SimEnt {
     protected int _resendTime = 0;
     
     HashMap<Integer, ExpectedAck> expectedAck = new HashMap<Integer, ExpectedAck>();
-    //int expectedAck = 0;
 
     public void StartSending(int network, int node, int number, int timeInterval, int startSeq, int ackWindow, int resendTime) {
         _stopSendingAfter = number;
@@ -78,6 +77,7 @@ public class Node extends SimEnt {
         expectedAck.put(_seq, new ExpectedAck(msg));
         
         System.out.println("3 way handshake Init");
+        System.out.println("3WH: Sending SYN");
         TCP_status(msg);
         send(_peer, msg, 0);
     }
@@ -97,6 +97,8 @@ public class Node extends SimEnt {
     		this.time = SimEngine.getTime();
     	}
     }
+    
+    boolean first = true;
 
 
 //**********************************************************************************	
@@ -105,16 +107,24 @@ public class Node extends SimEnt {
 
     public void recv(SimEnt src, Event ev) {
         if (ev instanceof TimerEvent) {
-            if(expectedAck.size() < _ackWindow) {
-            	Message newMsg = new Message(_id, new NetworkAddr(_toNetwork, _toHost), _seq);
-            	
-            	System.out.println("Node " + _id.networkId() + "." + _id.nodeId() + " sends message with seq: " + _seq + " at time " + SimEngine.getTime()+"\n");
-            	
-            	_seq = _seq + 69;
-            	expectedAck.put(_seq, new ExpectedAck(newMsg));
-            	send(_peer, newMsg, 3);
-            }
-            
+        	if(first) 
+        	{
+        		first = false;
+        		TCP(new NetworkAddr(_toNetwork, _toHost));
+        	}
+        	else
+        	{
+	            if(expectedAck.size() < _ackWindow) {
+	            	Message newMsg = new Message(_id, new NetworkAddr(_toNetwork, _toHost), _seq);
+	            	
+	            	System.out.println("Node " + _id.networkId() + "." + _id.nodeId() + " sends message with seq: " + _seq + " at time " + SimEngine.getTime()+"\n");
+	            	
+	            	_seq = _seq + 69;
+	            	expectedAck.put(_seq, new ExpectedAck(newMsg));
+	            	send(_peer, newMsg, 3);
+	            }
+        	}
+        	
         	for(Integer key : expectedAck.keySet()) {
         		ExpectedAck ack = expectedAck.get(key);
         		double currentTime = SimEngine.getTime();
@@ -123,6 +133,7 @@ public class Node extends SimEnt {
         		if(currentTime - ack.time > _resendTime) {
         			System.out.println("Resending message (seq: "+ack.msg.seq()+") to node: "+ack.msg.destination());
         			ack.time = currentTime;
+        			ack.msg.ttl = 0;
         			send(_peer, ack.msg, 3);
         		}
             }
@@ -153,8 +164,10 @@ public class Node extends SimEnt {
                 
                 _seq++;
                 expectedAck.put(_seq, new ExpectedAck(newMsg));
+                System.out.println("3WH: Sending SYN/ACK");
             }else if (ackflag && synflag){ //Receive Syn/Ack, Send Ack
             	newMsg = new Message(_id, dst, _seq, false, true, recvSeq+1);
+            	System.out.println("3WH: Sending ACK");
             }
             
             //Receive regular message (send Ack back)
