@@ -1,5 +1,8 @@
 package Sim;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import Sim.CustomEvents.ChangeInterfaceEvent;
 
 // This class implements a node (host) it has an address, a peer that it communicates with
@@ -51,6 +54,9 @@ public class Node extends SimEnt {
     protected int _timeBetweenSending = 10; //time between messages
     protected int _toNetwork = 0;
     protected int _toHost = 0;
+    
+    HashMap<Integer, Message> expectedAck = new HashMap<Integer, Message>();
+    //int expectedAck = 0;
 
     public void StartSending(int network, int node, int number, int timeInterval, int startSeq) {
         _stopSendingAfter = number;
@@ -62,8 +68,21 @@ public class Node extends SimEnt {
     }
 
     public void TCP(NetworkAddr dst) {
-
-        send(_peer, new Message(this.getAddr(), dst, 1, true, false, 0), 0);
+    	//System.out.println("Node " + _id.networkId() + "." + _id.nodeId() + " starts 3-way-handshake");
+    	_seq = (int) (Math.random()*1000);
+        Message msg = new Message(this.getAddr(), dst, _seq, true, false, 0);
+        _seq++;
+        expectedAck.put(_seq, msg);
+        
+        System.out.println("3 way handshake Init");
+        TCP_status(msg);
+        send(_peer, msg, 0);
+    }
+    
+    public void TCP_status(Message msg) {
+    	System.out.println("Node " + _id.networkId() + "." + _id.nodeId()+ " sends Syn: "+msg.synflag() + " - seq: " + msg.seq()+ 
+    			" - Ack: "+ msg.ackflag() + " - acknum: " + msg.ack()
+    			+ " Expected Ack: " + expectedAck);
     }
 
 
@@ -82,29 +101,53 @@ public class Node extends SimEnt {
 
                 statisticsSend();
             }
-
-
         }
 
         if (ev instanceof Message) {
             System.out.println("Node " + _id.networkId() + "." + _id.nodeId() + " receives message with seq: " + ((Message) ev).seq() + " at time " + SimEngine.getTime());
             statisticsRecv();
-
-
-            if (((Message) ev).synflag()) {
-                int seqnum = ((Message) ev).seq();
-                int acknum = ((Message) ev).ack();
-                NetworkAddr dst = ((Message) ev).source();
-
-                Message newMsg = new Message(_id, dst, seqnum);
-                send(((Message) ev).source(), )
-
+            
+            int timeDelay = (int) (Math.random()*10);
+            Message msg = (Message) ev;
+            boolean ackflag = msg.ackflag();
+            boolean synflag = msg.synflag();
+            
+            int recvSeq = msg.seq();
+            int recvAck = msg.ack();
+            NetworkAddr dst = msg.source();
+            
+            //bullshit
+            Message newMsg = new Message(_id, _id, 0, false, false, 0);
+            
+            //3 way handshake
+            if (synflag && !ackflag) { //Receive Syn (3-w-h)
+                _seq = (int) (Math.random()*1000);
+                newMsg = new Message(_id, dst, _seq, true, true, recvSeq+1);
+                
+                _seq++;
+                expectedAck.put(_seq, newMsg);
+                send(_peer, newMsg, timeDelay);
+            }else if (ackflag && synflag){ //Receive Syn/Ack (3-w-h)
+            	newMsg = new Message(_id, dst, _seq, false, true, recvSeq+1);
+               
+                _seq++;
+                expectedAck.put(_seq, newMsg);
+                send(_peer, newMsg, timeDelay);
+            }else if (!(ackflag || synflag)){ //Receive regular message (send Ack back)
+            	newMsg = new Message(_id, dst, _seq, false, true, recvSeq+69);
+                send(_peer, newMsg, timeDelay);
             }
-
-
+            
+            // Handle ack
+            if(ackflag){
+            	//Remove buffered message when receive ack
+            	expectedAck.remove(recvAck);
+            }
+            
+            TCP_status(newMsg);
         }
 
-        System.out.println("Node: " + _id.nodeId() + ". Packets sent: " + sentPackets + ". Packets recv: " + recvPackets);
+        //System.out.println("Node: " + _id.nodeId() + ". Packets sent: " + sentPackets + ". Packets recv: " + recvPackets);
     }
 
     //**********************************************************************************

@@ -8,8 +8,8 @@ public class Message implements Event {
     private NetworkAddr _source;
     private NetworkAddr _destination;
     private int _seq = 0;
-    private boolean _synflag;
-    private boolean _ackflag;
+    private boolean _synflag = false;
+    private boolean _ackflag = false;
     private int _acknum;
 
     public int ttl = 0;
@@ -37,6 +37,10 @@ public class Message implements Event {
 
     public boolean ackflag() {
         return _ackflag;
+    }
+    
+    public void setSeq(int seq) {
+    	_seq = seq;
     }
 
     public int ack() {

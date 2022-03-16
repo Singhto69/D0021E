@@ -119,7 +119,7 @@ public class Router extends Node{
 			//System.out.println("DestIp after: " + destIp.networkId() +"."+destIp.nodeId());
 			
 			SimEnt sendNext = getInterface(destIp);
-			System.out.println("Router ("+ networkId() +") sends to link: " + sendNext);		
+			//System.out.println("Router ("+ networkId() +") sends to link: " + sendNext+"\n");		
 			send (sendNext, event, _now);
 		}
 		
